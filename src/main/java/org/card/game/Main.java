@@ -1,5 +1,7 @@
 package org.card.game;
 
+import high_low.HighLowMenu;
+
 import java.util.Scanner;
 
 public class Main {
@@ -28,7 +30,8 @@ public class Main {
                 break;
 
             case 2:
-
+                HighLowMenu highLowMenu = new HighLowMenu();
+                highLowMenu.mainMenu();
                 break;
 
             default:
