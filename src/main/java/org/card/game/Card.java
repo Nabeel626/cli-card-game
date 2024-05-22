@@ -1,24 +1,22 @@
-package org.card;
-
-import java.util.Arrays;
+package org.card.game;
 
 public class Card {
 
-    private String[] suit = {"HEARTS ♥", "CLUBS ♣", "DIAMONDS ♦", "SPADES ♠"};
-    private String symbol;
-    private int value;
+    protected String suit;
+    protected String symbol;
+    protected int value;
 
-    public Card(String[] suit, String symbol, int value) {
+    public Card(String suit, String symbol) {
         this.suit = suit;
         this.symbol = symbol;
         this.value = assignValue(symbol);
     }
 
-    public String[] getSuit() {
+    public String getSuit() {
         return suit;
     }
 
-    public void setSuit(String[] suit) {
+    public void setSuit(String suit) {
         this.suit = suit;
     }
 
@@ -85,13 +83,10 @@ public class Card {
                 return 0;
         }
 
-//        { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-//        {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
-
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(suit);
+        return suit + " " + symbol;
     }
 }
