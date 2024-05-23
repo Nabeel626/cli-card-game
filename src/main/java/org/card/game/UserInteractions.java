@@ -1,5 +1,7 @@
 package org.card.game;
 
+import high_low.HighLowMenu;
+
 import java.util.Scanner;
 
 public class UserInteractions {
@@ -38,7 +40,8 @@ public class UserInteractions {
                     break;
 
                 case 2:
-
+                    HighLowMenu highLowMenu = new HighLowMenu("High Low Game", "randomise card to choose higher or lower");
+                    highLowMenu.highLowMainMenu();
                     start = false;
                     break;
 
