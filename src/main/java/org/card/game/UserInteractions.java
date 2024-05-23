@@ -21,7 +21,15 @@ public class UserInteractions {
 
             System.out.println("Press 1 for snap or 2 for high and low");
             System.out.println("type a number: ");
-            long input = scanner.nextLong();
+            String inputString = scanner.nextLine();
+
+            while (!inputString.matches(".*[0-9].*")){
+                System.out.println("Press 1 for snap or 2 for high and low");
+                System.out.println("Only enter either 1 or 2");
+                inputString = scanner.nextLine();
+            }
+
+            long input = Long.parseLong(inputString);
 
             switch ((int) input) {
                 case 1:
