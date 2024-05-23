@@ -1,6 +1,7 @@
 package org.card.game;
 
 import high_low.HighLowMenu;
+import snap.SnapMenu;
 
 import java.util.Scanner;
 
@@ -35,7 +36,8 @@ public class UserInteractions {
 
             switch ((int) input) {
                 case 1:
-
+                    SnapMenu snapMenu = new SnapMenu("Snap Game", "First to call snap");
+                    snapMenu.snapRules();
                     start = false;
                     break;
 
