@@ -1,7 +1,9 @@
 package high_low;
 
+import high_low.createFile.ReadAndWriteFile;
 import org.card.game.Game;
 import org.card.game.UserInteractions;
+
 import java.util.Scanner;
 
 public class HighLowMenu extends Game {
@@ -25,9 +27,9 @@ public class HighLowMenu extends Game {
         System.out.println("|                                          RULES                                        |");
         System.out.println("|                              A RANDOM CARD WILL BE PICKED                             |");
         System.out.println("|  YOUR JOB IS TO GUESS THE CARD IF IT WILL BE HIGHER OR LOWER THAN THE CARD PRESENTED  |");
-        System.out.println("|     YOU CAN QUIT BY ENTERING STOP AT ANY POINT AND THIS WILL RETURN YOU BACK HERE     |");
+        System.out.println("|   YOU CAN QUIT THE GAME BY STOPPING AT ANY POINT AND THIS WILL RETURN YOU BACK HERE   |");
         System.out.println("-----------------------------------------------------------------------------------------\n");
-        System.out.println("             TYPE 'PLAY' TO START OR TYPE 'CLOSE' TO RETURN THE MAIN MENU                \n");
+        System.out.println("TYPE 'PLAY' TO START, TYPE 'SHOW' TO SHOW SCORES OR TYPE 'CLOSE' TO RETURN THE MAIN MENU\n");
         userSelection();
     }
 
@@ -42,6 +44,11 @@ public class HighLowMenu extends Game {
             switch (userChoose) {
                 case "PLAY":
                     play();
+                    runMenu = false;
+                    break;
+                case "SHOW":
+                    ShowScores showScores = new ShowScores();
+                    showScores.showScore();
                     runMenu = false;
                     break;
                 case "CLOSE":
@@ -64,7 +71,31 @@ public class HighLowMenu extends Game {
 
     @Override
     public boolean playAgain() {
+        Scanner scanner1 = new Scanner(System.in);
 
-        return false;
+        System.out.println("\nWOULD YOU LIKE TO PLAY AGAIN");
+        System.out.println("TYPE 'Y' FOR YES OR 'N' FOR NO ");
+
+        while (true) {
+            System.out.println("\nENTER CHOICE:  ");
+            String choose = scanner1.next();
+
+            switch (choose) {
+                case "Y":
+                    ChooseDifficulty chooseDifficulty = new ChooseDifficulty();
+                    chooseDifficulty.difficultyLevel();
+                    return false;
+
+                case "N":
+                    UserInteractions userInteractions = new UserInteractions();
+                    userInteractions.startGameMessage();
+                    return false;
+
+                default:
+                    System.out.println("\nENTER A VALID CHOICE");
+                    break;
+            }
+        }
+
     }
 }

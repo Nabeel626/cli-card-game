@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class UserInteractions {
 
     Scanner scanner = new Scanner(System.in);
-    String username;
+    public String username;
     boolean start = true;
 
     public void startGameMessage() {
