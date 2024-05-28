@@ -7,10 +7,7 @@ public class RunGame extends Deck {
 
     protected boolean startGameBoolean = true;
 
-    //COULD LOOP THE ARRAY OF DECKS SO CHECK THE LENGTH IF THAT IS 0 THEN RESET CARDS AND SHUFFLE
-    //EASY, MEDIUM OR HARD DIFFICULTY WITH LIVES. SO, HARD WILL HAVE A TIME LIMIT
     //COULD CREATE A LEADERBOARD STORES NAMES WITH HIGHEST POINT
-    //COULD ADD MULTIPLAYER SO USER 1 WILL PLAY FIRST AND THEN USER 2????
     //WHEN FIRST STARTING THE MAIN MENU, IF THERE IS NO NAME THEN IT WILL ASK YOUR NAME. BUT IF THERE IS THEN THAT WILL BE STORED IN AN ARRAY/FILE
 
 
@@ -22,15 +19,33 @@ public class RunGame extends Deck {
         ChooseDifficulty chooseDifficulty = new ChooseDifficulty();
         chooseDifficulty.difficultyLevel();
 
-        //This will add it to the temp Array, just in case if the user gets all of them right, this is a BACKUP
-//        resetDeck();
-//        shuffleDeck();
-//        tempDeck = deckOfCards;
-//
-//        //This will reset it again for the user to play
-//        resetDeck();
-//        shuffleDeck();
+    }
 
+    public void livesRemaining(int lives, int score, boolean gameContinue) {
+        if (lives == 0) {
+            System.out.println();
+            System.out.println("YOU HAVE RUN OUT OF LIVES :( \n");
+            ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
+            readAndWriteFile.writeData(score);
+
+            HighLowMenu highLowMenu = new HighLowMenu("Try Again", "randomise card to choose higher or lower");
+            highLowMenu.playAgain();
+            gameContinue = false;
+        }
+    }
+
+    public void showLives(int lives) {
+        System.out.print("LIVES: ");
+        for(int i = 0; i < lives; i++) {
+            System.out.print("❤");
+        }
+    }
+
+    public void showHigherLowerMenu() {
+        System.out.println("\n--------------------------------------------------------");
+        System.out.println("| DO YOU THINK IT'S HIGHER OR LOWER THAN THE NEXT CARD |");
+        System.out.println("|   TYPE 1 FOR HIGHER, 2 FOR LOWER OR 3 TO STOP GAME   |");
+        System.out.println("--------------------------------------------------------\n");
     }
 
 }

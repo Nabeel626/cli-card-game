@@ -20,14 +20,12 @@ public class HardDifficulty extends Deck  {
         shuffleDeck();
 
         while (gameContinue) {
+            RunGame runGame = new RunGame();
 
             dealCard();
+            continueDeck();
 
-            System.out.println("\n--------------------------------------------------------");
-            System.out.println("| DO YOU THINK IT'S HIGHER OR LOWER THAN THE NEXT CARD |");
-            System.out.println("|   TYPE 1 FOR HIGHER, 2 FOR LOWER OR 3 TO STOP GAME   |");
-            System.out.println("--------------------------------------------------------");
-
+            runGame.showHigherLowerMenu();
             System.out.println("                  CURRENT SCORE: " + score + "\n");
 
             System.out.println("ENTER YOUR CHOICE: ");
@@ -81,7 +79,6 @@ public class HardDifficulty extends Deck  {
                 case 3:
                     System.out.println("LOADING.......");
                     System.out.println("RETURNING BACK TO MAIN MENU!!!");
-                    RunGame runGame = new RunGame();
                     runGame.startGame();
                     gameContinue = false;
                     break;

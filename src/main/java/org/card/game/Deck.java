@@ -12,10 +12,8 @@ public class Deck {
     final String[] symbol = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 
 
-    public Card dealCard() {
-
+    public void dealCard() {
         System.out.println(deckOfCards.get(0));
-        return deckOfCards.get(0);
     }
 
     public void sortDeck() {
@@ -32,10 +30,7 @@ public class Deck {
     }
 
     public void shuffleDeck() {
-
         Collections.shuffle(deckOfCards);
-        System.out.println(deckOfCards);
-
     }
 
     public void resetDeck() {
@@ -48,14 +43,22 @@ public class Deck {
             }
         }
 
-        System.out.println(deckOfCards);
-
     }
 
     public void printDeck() {
 
         for(Card card : deckOfCards) {
             System.out.println(card);
+        }
+
+    }
+
+    public void continueDeck() {
+
+        if(deckOfCards.isEmpty()) {
+            resetDeck();
+            shuffleDeck();
+            dealCard();
         }
 
     }

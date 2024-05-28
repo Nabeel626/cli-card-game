@@ -1,8 +1,6 @@
 package high_low.difficulty;
 
-import high_low.HighLowMenu;
 import high_low.RunGame;
-import high_low.createFile.ReadAndWriteFile;
 import org.card.game.Deck;
 
 import java.util.Scanner;
@@ -22,29 +20,15 @@ public class EasyDifficulty extends Deck {
 
         while (gameContinue) {
 
-            if (lives == 0) {
-                System.out.println();
-                System.out.println("YOU HAVE RUN OUT OF LIVES :( \n");
-                ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
-//                readAndWriteFile.writeData(score);
-
-                HighLowMenu highLowMenu = new HighLowMenu("Try Again", "randomise card to choose higher or lower");
-                highLowMenu.playAgain();
-                gameContinue = false;
-            }
+            RunGame runGame = new RunGame();
+            runGame.livesRemaining(lives, score, gameContinue);
 
             dealCard();
 
-            System.out.println("\n--------------------------------------------------------");
-            System.out.println("| DO YOU THINK IT'S HIGHER OR LOWER THAN THE NEXT CARD |");
-            System.out.println("|   TYPE 1 FOR HIGHER, 2 FOR LOWER OR 3 TO STOP GAME   |");
-            System.out.println("--------------------------------------------------------\n");
+            continueDeck();
 
-            System.out.print("LIVES: ");
-            for(int i = 0; i < this.lives; i++) {
-                System.out.print("❤");
-            }
-
+            runGame.showHigherLowerMenu();
+            runGame.showLives(lives);
             System.out.print("                 CURRENT SCORE: " + score + "\n");
 
             System.out.println("ENTER YOUR CHOICE: ");
@@ -88,7 +72,6 @@ public class EasyDifficulty extends Deck {
                 case 3:
                     System.out.println("LOADING.......");
                     System.out.println("RETURNING BACK TO MAIN MENU!!!");
-                    RunGame runGame = new RunGame();
                     runGame.startGame();
                     gameContinue = false;
                     break;

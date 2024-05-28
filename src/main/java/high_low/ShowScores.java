@@ -19,14 +19,10 @@ public class ShowScores {
         readAndWriteFile.readData();
         System.out.println("-------------------------");
 
-
-
         System.out.println();
-
         System.out.println("TYPE 'BACK' TO GO BACK TO PREVIOUS SCREEN\n");
 
         while (start) {
-
             System.out.println("ENTER YOU CHOICE: ");
             String choose = scanner.next();
 

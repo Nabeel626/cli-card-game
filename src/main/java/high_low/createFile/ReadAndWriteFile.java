@@ -27,18 +27,21 @@ public class ReadAndWriteFile {
             readFile = new FileReader("scores.txt");
             reader = new BufferedReader(readFile);
 
-            String tempscore = reader.readLine();
-            System.out.println(Integer.parseInt(tempscore));
+            String highscore = reader.readLine();
 
             writeFile = new FileWriter(scorefile);
             writer = new BufferedWriter(writeFile);
 
-            if(score > Integer.parseInt(tempscore)) {
-                tempscore = String.valueOf(score);
-                writer.write(tempscore);
+            if(highscore == null) {
+                writer.write("0");
+            }
+
+            if(score > Integer.parseInt(highscore)) {
+                highscore = String.valueOf(score);
+                writer.write(highscore);
                 writer.write("\n" + String.valueOf(score));
             } else {
-                writer.write(tempscore);
+                writer.write(highscore);
                 writer.write("\n" + String.valueOf(score));
             }
 
