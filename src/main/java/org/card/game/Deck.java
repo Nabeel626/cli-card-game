@@ -34,7 +34,7 @@ public class Deck {
     public void shuffleDeck() {
 
         Collections.shuffle(deckOfCards);
-        System.out.println(deckOfCards);
+
 
     }
 
@@ -48,7 +48,7 @@ public class Deck {
             }
         }
 
-        System.out.println(deckOfCards);
+
 
     }
 
