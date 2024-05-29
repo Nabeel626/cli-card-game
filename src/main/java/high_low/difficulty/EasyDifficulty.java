@@ -1,5 +1,6 @@
 package high_low.difficulty;
 
+import high_low.HighLowUtils;
 import high_low.RunGame;
 import org.card.game.Deck;
 
@@ -23,19 +24,17 @@ public class EasyDifficulty extends Deck {
             RunGame runGame = new RunGame();
             runGame.livesRemaining(lives, score, gameContinue);
 
-            dealCard();
-
             continueDeck();
 
             runGame.showHigherLowerMenu();
             runGame.showLives(lives);
-            System.out.print("                 CURRENT SCORE: " + score + "\n");
+            System.out.print(HighLowUtils.CYAN_FONT + "                 CURRENT SCORE: " + score + "\n");
 
             System.out.println("ENTER YOUR CHOICE: ");
             String userChoiceString = scanner.next();
 
-            while (!userChoiceString.matches(".*[0-9].*")){
-                System.out.println("------------------------------------");
+            while (!userChoiceString.matches(".*[0-9].*")) {
+                System.out.println(HighLowUtils.CYAN_FONT + "------------------------------------");
                 System.out.println("|    PLEASE ONLY ENTER 1, 2 OR 3   |");
                 System.out.println("------------------------------------\n");
                 System.out.println("ENTER YOUR CHOICE: ");
@@ -46,40 +45,39 @@ public class EasyDifficulty extends Deck {
 
             switch ((int) userChoice) {
                 case 1:
-                    if(deckOfCards.get(0).getValue() <= deckOfCards.get(1).getValue()) {
-                        System.out.println("CORRECT\n");
+                    if (deckOfCards.get(0).getValue() <= deckOfCards.get(1).getValue()) {
+                        System.out.println(HighLowUtils.GREEN_FONT + "CORRECT\n");
                         guessCorrect = true;
                         ++score;
 
                     } else {
-                        System.out.println("NICE TRY, BUT THAT WAS NOT THE RIGHT ANSWER");
+                        System.out.println(HighLowUtils.RED_FONT + "NICE TRY, BUT THAT WAS NOT THE RIGHT ANSWER");
                     }
                     deckOfCards.remove(0);
                     break;
 
                 case 2:
-                    if(deckOfCards.get(0).getValue() >= deckOfCards.get(1).getValue()) {
-                        System.out.println("CORRECT\n");
+                    if (deckOfCards.get(0).getValue() >= deckOfCards.get(1).getValue()) {
+                        System.out.println(HighLowUtils.GREEN_FONT + "CORRECT\n");
                         guessCorrect = true;
                         ++score;
 
                     } else {
-                        System.out.println("NICE TRY, BUT THAT WAS NOT THE RIGHT ANSWER");
+                        System.out.println(HighLowUtils.RED_FONT + "NICE TRY, BUT THAT WAS NOT THE RIGHT ANSWER");
                     }
                     deckOfCards.remove(0);
                     break;
 
                 case 3:
-                    System.out.println("LOADING.......");
+                    System.out.println(HighLowUtils.YELLOW_FONT + "LOADING.......");
                     System.out.println("RETURNING BACK TO MAIN MENU!!!");
                     runGame.startGame();
                     gameContinue = false;
                     break;
 
                 default:
-                    System.out.println("ENTER A VALID CHOICE");
+                    System.out.println(HighLowUtils.YELLOW_FONT + "ENTER A VALID CHOICE");
                     break;
-
             }
 
             if (!guessCorrect) {

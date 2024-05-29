@@ -1,6 +1,5 @@
 package high_low;
 
-import high_low.createFile.ReadAndWriteFile;
 import org.card.game.Game;
 import org.card.game.UserInteractions;
 
@@ -9,7 +8,6 @@ import java.util.Scanner;
 public class HighLowMenu extends Game {
 
     Scanner scanner = new Scanner(System.in);
-    public static final String CYAN_FONT = "\u001B[36m";
 
     public HighLowMenu(String title, String rules) {
         super(title, rules);
@@ -21,7 +19,7 @@ public class HighLowMenu extends Game {
 
     @Override
     public void printRules() {
-        System.out.println(CYAN_FONT + "-----------------------------------------------------------------------------------------");
+        System.out.println(HighLowUtils.CYAN_FONT + "-----------------------------------------------------------------------------------------");
         System.out.println("|                              WELCOME TO THE HIGH LOW GAME                             |");
         System.out.println("|                                                                                       |");
         System.out.println("|                                          RULES                                        |");
@@ -38,7 +36,7 @@ public class HighLowMenu extends Game {
 
         while (runMenu) {
 
-            System.out.println("ENTER YOUR CHOICE: ");
+            System.out.println(HighLowUtils.CYAN_FONT + "ENTER YOUR CHOICE: ");
             String userChoose = scanner.next();
 
             switch (userChoose) {
@@ -57,7 +55,7 @@ public class HighLowMenu extends Game {
                     runMenu = false;
                     break;
                 default:
-                    System.out.println("PLEASE ENTER A VALID CHOICE\n");
+                    System.out.println(HighLowUtils.YELLOW_FONT + "PLEASE ENTER A VALID CHOICE\n");
                     break;
             }
         }
@@ -73,11 +71,11 @@ public class HighLowMenu extends Game {
     public boolean playAgain() {
         Scanner scanner1 = new Scanner(System.in);
 
-        System.out.println("\nWOULD YOU LIKE TO PLAY AGAIN");
+        System.out.println(HighLowUtils.CYAN_FONT + "\nWOULD YOU LIKE TO PLAY AGAIN");
         System.out.println("TYPE 'Y' FOR YES OR 'N' FOR NO ");
 
         while (true) {
-            System.out.println("\nENTER CHOICE:  ");
+            System.out.println(HighLowUtils.CYAN_FONT + "\nENTER CHOICE:  ");
             String choose = scanner1.next();
 
             switch (choose) {
@@ -92,7 +90,7 @@ public class HighLowMenu extends Game {
                     return false;
 
                 default:
-                    System.out.println("\nENTER A VALID CHOICE");
+                    System.out.println(HighLowUtils.YELLOW_FONT + "\nENTER A VALID CHOICE");
                     break;
             }
         }

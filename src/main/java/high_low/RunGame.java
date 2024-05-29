@@ -7,24 +7,21 @@ public class RunGame extends Deck {
 
     protected boolean startGameBoolean = true;
 
-    //COULD CREATE A LEADERBOARD STORES NAMES WITH HIGHEST POINT
-    //WHEN FIRST STARTING THE MAIN MENU, IF THERE IS NO NAME THEN IT WILL ASK YOUR NAME. BUT IF THERE IS THEN THAT WILL BE STORED IN AN ARRAY/FILE
-
-
     public void startGame() {
-
         ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
         readAndWriteFile.CreateFile();
 
         ChooseDifficulty chooseDifficulty = new ChooseDifficulty();
         chooseDifficulty.difficultyLevel();
-
     }
 
     public void livesRemaining(int lives, int score, boolean gameContinue) {
         if (lives == 0) {
             System.out.println();
-            System.out.println("YOU HAVE RUN OUT OF LIVES :( \n");
+            System.out.println(HighLowUtils.RED_FONT + "YOU HAVE RUN OUT OF LIVES :( \n");
+            System.out.println("THE NEXT CARD WAS: \n");
+            getNextCard();
+
             ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
             readAndWriteFile.writeData(score);
 
@@ -35,14 +32,14 @@ public class RunGame extends Deck {
     }
 
     public void showLives(int lives) {
-        System.out.print("LIVES: ");
+        System.out.print(HighLowUtils.YELLOW_FONT + "LIVES: ");
         for(int i = 0; i < lives; i++) {
-            System.out.print("❤");
+            System.out.print(HighLowUtils.YELLOW_FONT + "❤");
         }
     }
 
     public void showHigherLowerMenu() {
-        System.out.println("\n--------------------------------------------------------");
+        System.out.println(HighLowUtils.CYAN_FONT + "\n--------------------------------------------------------");
         System.out.println("| DO YOU THINK IT'S HIGHER OR LOWER THAN THE NEXT CARD |");
         System.out.println("|   TYPE 1 FOR HIGHER, 2 FOR LOWER OR 3 TO STOP GAME   |");
         System.out.println("--------------------------------------------------------\n");

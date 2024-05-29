@@ -1,6 +1,7 @@
 package org.card.game;
 
 import high_low.HighLowMenu;
+import high_low.HighLowUtils;
 
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ public class UserInteractions {
 
     public void startGameMessage() {
 
-        System.out.println("\nWelcome \n");
+        System.out.println("\n" + HighLowUtils.YELLOW_FONT + "Welcome \n");
         System.out.println("What's your name???");
         System.out.println("Type your name: ");
         username = scanner.nextLine();

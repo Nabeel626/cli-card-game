@@ -1,6 +1,7 @@
 package high_low.difficulty;
 
 import high_low.HighLowMenu;
+import high_low.HighLowUtils;
 import high_low.RunGame;
 import high_low.createFile.ReadAndWriteFile;
 import org.card.game.Deck;
@@ -12,7 +13,6 @@ public class HardDifficulty extends Deck  {
     Scanner scanner = new Scanner(System.in);
     protected boolean gameContinue = true;
     protected int score;
-    protected int highscore;
 
     public void hardMode() {
 
@@ -22,17 +22,16 @@ public class HardDifficulty extends Deck  {
         while (gameContinue) {
             RunGame runGame = new RunGame();
 
-            dealCard();
             continueDeck();
 
             runGame.showHigherLowerMenu();
-            System.out.println("                  CURRENT SCORE: " + score + "\n");
+            System.out.println(HighLowUtils.CYAN_FONT  + "                  CURRENT SCORE: " + score + "\n");
 
             System.out.println("ENTER YOUR CHOICE: ");
             String userChoiceString = scanner.next();
 
             while (!userChoiceString.matches(".*[0-9].*")){
-                System.out.println("------------------------------------");
+                System.out.println(HighLowUtils.CYAN_FONT + "------------------------------------");
                 System.out.println("|    PLEASE ONLY ENTER 1, 2 OR 3   |");
                 System.out.println("------------------------------------\n");
                 System.out.println("ENTER YOUR CHOICE: ");
@@ -44,12 +43,14 @@ public class HardDifficulty extends Deck  {
             switch ((int) userChoice) {
                 case 1:
                     if(deckOfCards.get(0).getValue() <= deckOfCards.get(1).getValue()) {
-                        System.out.println("CORRECT\n");
+                        System.out.println(HighLowUtils.GREEN_FONT + "CORRECT\n");
                         deckOfCards.remove(0);
                         ++score;
 
                     } else {
-                        System.out.println("BETTER LUCK NEXT TIME");
+                        System.out.println(HighLowUtils.RED_FONT + "BETTER LUCK NEXT TIME");
+                        System.out.println("THE NEXT CARD WAS: \n");
+                        getNextCard();
                         ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
                         readAndWriteFile.writeData(score);
 
@@ -61,12 +62,14 @@ public class HardDifficulty extends Deck  {
 
                 case 2:
                     if(deckOfCards.get(0).getValue() >= deckOfCards.get(1).getValue()) {
-                        System.out.println("CORRECT\n");
+                        System.out.println(HighLowUtils.GREEN_FONT + "CORRECT\n");
                         deckOfCards.remove(0);
                         ++score;
 
                     } else {
-                        System.out.println("BETTER LUCK NEXT TIME");
+                        System.out.println(HighLowUtils.RED_FONT + "BETTER LUCK NEXT TIME");
+                        System.out.println("THE NEXT CARD WAS: \n");
+                        getNextCard();
                         ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
                         readAndWriteFile.writeData(score);
 
@@ -77,14 +80,14 @@ public class HardDifficulty extends Deck  {
                     break;
 
                 case 3:
-                    System.out.println("LOADING.......");
+                    System.out.println(HighLowUtils.YELLOW_FONT + "LOADING.......");
                     System.out.println("RETURNING BACK TO MAIN MENU!!!");
                     runGame.startGame();
                     gameContinue = false;
                     break;
 
                 default:
-                    System.out.println("ENTER A VALID CHOICE");
+                    System.out.println(HighLowUtils.YELLOW_FONT + "ENTER A VALID CHOICE");
                     break;
 
             }

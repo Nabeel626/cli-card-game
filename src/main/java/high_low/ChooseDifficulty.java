@@ -13,7 +13,7 @@ public class ChooseDifficulty extends RunGame {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n-----------------------------------------------------------------------------------------");
+        System.out.println(HighLowUtils.CYAN_FONT + "\n-------------------------------------------------------------------------------------------");
         System.out.println("|                                    CHOOSE DIFFICULTY                                    |");
         System.out.println("|                                                                                         |");
         System.out.println("|                       WOULD YOU LIKE TO PLAY EASY, MEDIUM OR HARD                       |");
@@ -23,11 +23,11 @@ public class ChooseDifficulty extends RunGame {
 
         while (startGameBoolean) {
 
-            System.out.println("ENTER YOUR CHOICE: ");
+            System.out.println(HighLowUtils.CYAN_FONT + "ENTER YOUR CHOICE: ");
             String chooseDifficultyString = scanner.next();
 
             while (!chooseDifficultyString.matches(".*[0-9].*")){
-                System.out.println("---------------------------------------");
+                System.out.println(HighLowUtils.CYAN_FONT + "---------------------------------------");
                 System.out.println("|    PLEASE ONLY ENTER 1, 2, 3 OR 4   |");
                 System.out.println("---------------------------------------\n");
                 System.out.println("ENTER YOUR CHOICE: ");
@@ -53,14 +53,14 @@ public class ChooseDifficulty extends RunGame {
                     startGameBoolean = false;
                     break;
                 case 4:
-                    System.out.println("LOADING.......");
+                    System.out.println(HighLowUtils.CYAN_FONT + "LOADING.......");
                     System.out.println("RETURNING BACK TO MAIN MENU!!!");
                     UserInteractions userInteractions = new UserInteractions();
                     userInteractions.startGameMessage();
                     startGameBoolean = false;
                     break;
                 default:
-                    System.out.println("ENTER A VALID CHOICE");
+                    System.out.println(HighLowUtils.CYAN_FONT + "ENTER A VALID CHOICE");
                     break;
 
             }
