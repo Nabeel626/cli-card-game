@@ -13,7 +13,7 @@ public class Deck {
     final String[] suit = {"♥", "♣", "♦", "♠"};
     final String[] symbol = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 
-    public void dealCard() {
+    public Card dealCard() {
         if(deckOfCards.get(0).getValue() == 10){
             System.out.println(HighLowUtils.YELLOW_FONT + "┌────────────────┐");
             System.out.println("│ " + deckOfCards.get(0).getSymbol() + "             │");
@@ -35,9 +35,10 @@ public class Deck {
             System.out.println("│              " + deckOfCards.get(0).getSymbol() + " │");
             System.out.println("└────────────────┘");
         }
+        return deckOfCards.get(0);
     }
-
-//    public Card dealCard() {
+//
+//    public Card dealCardTwo() {
 //        System.out.println(deckOfCards.get(0));
 //        return deckOfCards.get(0);
 //    }
@@ -80,10 +81,7 @@ public class Deck {
     }
 
     public void shuffleDeck() {
-
         Collections.shuffle(deckOfCards);
-        System.out.println(deckOfCards);
-
     }
 
     public void resetDeck() {
@@ -95,9 +93,6 @@ public class Deck {
                 deckOfCards.add(new Card(suitArray, symbolArray));
             }
         }
-
-        System.out.println(deckOfCards);
-
     }
 
     public void printDeck() {
