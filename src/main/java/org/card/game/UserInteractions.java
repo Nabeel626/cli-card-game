@@ -12,12 +12,10 @@ public class UserInteractions {
     boolean start = true;
 
     public void startGameMessage() {
-
         System.out.println("\nWelcome \n");
         System.out.println("What's your name???");
         System.out.println("Type your name: ");
         username = scanner.nextLine();
-
         System.out.println("\nHi " + username + " choose a game below\n");
 
         while(start) {
@@ -36,7 +34,7 @@ public class UserInteractions {
 
             switch ((int) input) {
                 case 1:
-                    SnapMenu snapMenu = new SnapMenu("Snap Game", "First to call snap");
+                    SnapMenu snapMenu = new SnapMenu("Snap Game", "First to call snap", username);
                     snapMenu.snapRules();
                     start = false;
                     break;
