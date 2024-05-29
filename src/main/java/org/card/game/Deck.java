@@ -13,7 +13,7 @@ public class Deck {
     final String[] suit = {"♥", "♣", "♦", "♠"};
     final String[] symbol = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 
-    public void dealCard() {
+    public Card dealCard() {
         if(deckOfCards.get(0).getValue() == 10){
             System.out.println(HighLowUtils.YELLOW_FONT + "┌────────────────┐");
             System.out.println("│ " + deckOfCards.get(0).getSymbol() + "             │");
@@ -35,7 +35,13 @@ public class Deck {
             System.out.println("│              " + deckOfCards.get(0).getSymbol() + " │");
             System.out.println("└────────────────┘");
         }
+        return deckOfCards.get(0);
     }
+//
+//    public Card dealCardTwo() {
+//        System.out.println(deckOfCards.get(0));
+//        return deckOfCards.get(0);
+//    }
 
     public void getNextCard() {
         if(deckOfCards.get(1).getValue() == 10){
@@ -62,12 +68,14 @@ public class Deck {
     }
 
     public void sortDeck() {
+
         deckOfCards.sort((a,b) -> a.getValue() - b.getValue());
         System.out.println(deckOfCards);
 
     }
 
     public void sortDeck(Comparator<Card> comparator) {
+
         deckOfCards.sort(comparator);
         System.out.println(deckOfCards);
     }
@@ -77,6 +85,7 @@ public class Deck {
     }
 
     public void resetDeck() {
+
         deckOfCards = new ArrayList<>(52);
 
         for(String suitArray : suit) {
@@ -87,6 +96,7 @@ public class Deck {
     }
 
     public void printDeck() {
+
         for(Card card : deckOfCards) {
             System.out.println(card);
         }
