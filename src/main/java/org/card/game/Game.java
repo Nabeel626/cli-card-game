@@ -8,7 +8,6 @@ public abstract class Game {
         this.title = title;
         this.rules = rules;
     }
-
     public void printTitle() {
         System.out.println(title);
     }

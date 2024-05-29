@@ -85,8 +85,8 @@ public class HighLowMenu extends Game {
                     return false;
 
                 case "N":
-                    UserInteractions userInteractions = new UserInteractions();
-                    userInteractions.startGameMessage();
+                    HighLowMenu highLowMenu = new HighLowMenu("High Low Game", "randomise card to choose higher or lower");
+                    highLowMenu.highLowMainMenu();
                     return false;
 
                 default:

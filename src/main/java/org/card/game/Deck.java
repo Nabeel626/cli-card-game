@@ -37,11 +37,6 @@ public class Deck {
         }
         return deckOfCards.get(0);
     }
-//
-//    public Card dealCardTwo() {
-//        System.out.println(deckOfCards.get(0));
-//        return deckOfCards.get(0);
-//    }
 
     public void getNextCard() {
         if(deckOfCards.get(1).getValue() == 10){
