@@ -1,6 +1,7 @@
 package org.card.game;
 
 import high_low.HighLowMenu;
+import high_low.HighLowUtils;
 import snap.SnapMenu;
 
 import java.util.Scanner;
@@ -8,14 +9,16 @@ import java.util.Scanner;
 public class UserInteractions {
 
     Scanner scanner = new Scanner(System.in);
-    String username;
+    public String username;
     boolean start = true;
 
     public void startGameMessage() {
-        System.out.println("\nWelcome \n");
+
+        System.out.println("\n" + HighLowUtils.YELLOW_FONT + "Welcome \n");
         System.out.println("What's your name???");
         System.out.println("Type your name: ");
         username = scanner.nextLine();
+
         System.out.println("\nHi " + username + " choose a game below\n");
 
         while(start) {

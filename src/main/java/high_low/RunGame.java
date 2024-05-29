@@ -1,60 +1,48 @@
 package high_low;
 
+import high_low.createFile.ReadAndWriteFile;
 import org.card.game.Deck;
-
-import java.util.Scanner;
 
 public class RunGame extends Deck {
 
-    Scanner scanner = new Scanner(System.in);
-    boolean gameContinue = true;
+    protected boolean startGameBoolean = true;
 
     public void startGame() {
+        ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
+        readAndWriteFile.CreateFile();
 
-        resetDeck();
-        shuffleDeck();
+        ChooseDifficulty chooseDifficulty = new ChooseDifficulty();
+        chooseDifficulty.difficultyLevel();
+    }
 
-        while (gameContinue) {
+    public void livesRemaining(int lives, int score, boolean gameContinue) {
+        if (lives == 0) {
+            System.out.println();
+            System.out.println(HighLowUtils.RED_FONT + "YOU HAVE RUN OUT OF LIVES :( \n");
+            System.out.println("THE NEXT CARD WAS: \n");
+            getNextCard();
 
-            dealCard();
+            ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
+            readAndWriteFile.writeData(score);
 
-            System.out.println("--------------------------------------------------------");
-            System.out.println("| DO YOU THINK IT'S HIGHER OR LOWER THAN THE NEXT CARD |");
-            System.out.println("|          TYPE 1 FOR HIGHER OR 2 FOR LOWER            |");
-            System.out.println("--------------------------------------------------------\n");
-
-            System.out.println("ENTER YOUR CHOICE: ");
-            long userChoice = scanner.nextLong();
-
-//            while (!userChoice.matches(".*[0-9].*")){
-//                System.out.println("----------------------------------------------------");
-//                System.out.println("|            PLEASE ONLY ENTER 1 OR 2              |");
-//                System.out.println("|        TYPE 1 FOR HIGHER OR 2 FOR LOWER          |");
-//                System.out.println("----------------------------------------------------\n");
-//                System.out.println("ENTER YOUR CHOICE: ");
-//                userChoice = scanner.nextLine();
-//            }
-//
-            switch ((int) userChoice) {
-                case 1:
-
-                    gameContinue = false;
-                    break;
-
-                case 2:
-
-                    gameContinue = false;
-                    break;
-
-                default:
-
-                    break;
-
-            }
-
-
+            HighLowMenu highLowMenu = new HighLowMenu("Try Again", "randomise card to choose higher or lower");
+            highLowMenu.playAgain();
+            gameContinue = false;
         }
+    }
 
+    public void showLives(int lives) {
+        System.out.print(HighLowUtils.YELLOW_FONT + "LIVES: ");
+        for(int i = 0; i < lives; i++) {
+            System.out.print(HighLowUtils.YELLOW_FONT + "❤");
+        }
+    }
+
+    public void showHigherLowerMenu() {
+        System.out.println(HighLowUtils.CYAN_FONT + "\n--------------------------------------------------------");
+        System.out.println("| DO YOU THINK IT'S HIGHER OR LOWER THAN THE NEXT CARD |");
+        System.out.println("|   TYPE 1 FOR HIGHER, 2 FOR LOWER OR 3 TO STOP GAME   |");
+        System.out.println("--------------------------------------------------------\n");
     }
 
 }
