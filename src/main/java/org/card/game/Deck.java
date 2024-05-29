@@ -13,29 +13,22 @@ public class Deck {
 
 
     public Card dealCard() {
-
         System.out.println(deckOfCards.get(0));
         return deckOfCards.get(0);
     }
 
     public void sortDeck() {
-
         deckOfCards.sort((a,b) -> a.getValue() - b.getValue());
         System.out.println(deckOfCards);
-
     }
 
     public void sortDeck(Comparator<Card> comparator) {
-
         deckOfCards.sort(comparator);
         System.out.println(deckOfCards);
     }
 
     public void shuffleDeck() {
-
         Collections.shuffle(deckOfCards);
-
-
     }
 
     public void resetDeck() {
@@ -47,9 +40,6 @@ public class Deck {
                 deckOfCards.add(new Card(suitArray, symbolArray));
             }
         }
-
-
-
     }
 
     public void printDeck() {
@@ -57,7 +47,5 @@ public class Deck {
         for(Card card : deckOfCards) {
             System.out.println(card);
         }
-
     }
-
 }
