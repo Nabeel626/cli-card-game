@@ -25,9 +25,9 @@ public class HardDifficulty extends Deck  {
             continueDeck();
 
             runGame.showHigherLowerMenu();
-            System.out.println(HighLowUtils.CYAN_FONT  + "                  CURRENT SCORE: " + score + "\n");
+            System.out.println(HighLowUtils.YELLOW_FONT  + "                  CURRENT SCORE: " + score + "\n");
 
-            System.out.println("ENTER YOUR CHOICE: ");
+            System.out.println(HighLowUtils.CYAN_FONT + "ENTER YOUR CHOICE: ");
             String userChoiceString = scanner.next();
 
             while (!userChoiceString.matches(".*[0-9].*")){
